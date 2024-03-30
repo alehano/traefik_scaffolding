@@ -1,0 +1,18 @@
+tls:
+  # Use Cloudflare's origin sertificates to encrypt connection
+  certificates:
+    - certFile: /etc/traefik/certs/cloudflare-origin-cert.pem
+      keyFile: /etc/traefik/certs/cloudflare-origin-key.pem
+
+  # Allow only connection from Cloudflare's servers
+  # https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/
+  options:
+    default:
+      minVersion: VersionTLS12
+      cipherSuites:
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+      clientAuth:
+        caFiles:
+          - /etc/traefik/certs/authenticated_origin_pull_ca.pem
+        clientAuthType: RequireAndVerifyClientCert
