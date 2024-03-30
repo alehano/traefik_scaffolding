@@ -7,7 +7,7 @@ More info:
 https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/
 https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/
 
-Put your certificates into ssl directory by the following names:
+Put your certificates into ./ssl directory by the following names:
 
 - cloudflare-origin-cert.pem
 - cloudflare-origin-key.pem
