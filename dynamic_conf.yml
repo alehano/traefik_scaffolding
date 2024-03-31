@@ -1,5 +1,5 @@
 tls:
-  # Use Cloudflare's origin sertificates to encrypt connection
+  # Use Clo udflare's origin sertificates to encrypt connection
   certificates:
     - certFile: /etc/traefik/certs/example.com.pem
       keyFile: /etc/traefik/certs/example.com.key
@@ -22,6 +22,11 @@ tls:
 
 http:
   middlewares:
+    redirect-to-https:
+      redirectScheme:
+        scheme: https
+        #permanent: true
+
     # Redirect non-www URLs to their www equivalent
     # Use with traefik.http.routers.myRouter.middlewares: "redirect-non-www-to-www@file"
     redirect-non-www-to-www:
