@@ -14,7 +14,7 @@ services:
       - "traefik.http.services.myservice.loadbalancer.server.port=80" # The port your service listens on
       - "traefik.http.routers.myservice.entrypoints=websecure" # Use the entrypoint defined in Traefik's compose
       - "traefik.http.routers.myservice.tls=true"
-      - "traefik.http.routers.myservice.middlewares=redirect-to-https" # Redirect HTTP to HTTPS
+      #- "traefik.http.routers.myservice.middlewares=redirect-to-https" # Redirect HTTP to HTTPS. Can be set by Cloudflare
       - "traefik.http.routers.myservice.middlewares=redirect-www-to-non-www@file" # Redirect www to non-www
 
 networks:
