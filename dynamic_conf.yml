@@ -1,11 +1,11 @@
 tls:
   # Use Cloudflare's origin sertificates to encrypt connection
   certificates:
-    - certFile: /etc/traefik/certs/example.com-cloudflare-origin-cert.pem
-      keyFile: /etc/traefik/certs/example.com-cloudflare-origin-key.pem
+    - certFile: /etc/traefik/certs/example.com.pem
+      keyFile: /etc/traefik/certs/example.com.key
     # More certificates can be added
-    # - certFile: /etc/traefik/certs/example2.com-cloudflare-origin-cert.pem
-    #   keyFile: /etc/traefik/certs/example2.com-cloudflare-origin-key.pem
+    # - certFile: /etc/traefik/certs/example2.com.pem
+    #   keyFile: /etc/traefik/certs/example2.com.key
 
   # Allow only connection from Cloudflare's servers
   # https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/
