@@ -9,10 +9,14 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.vo.rule=Host(`example.com`)"
-      - "traefik.http.services.vo.loadbalancer.server.port=80" # The port your service listens on
-      - "traefik.http.routers.vo.entrypoints=websecure" # Use the entrypoint defined in Traefik's compose
-      - "traefik.http.routers.vo.tls=true"
+      #      - "traefik.http.routers.myservice.rule=Host(`example.com`)"
+      - "traefik.http.routers.myservice.rule=Host(`example.com`)||Host(`www.example.com`)"
+      - "traefik.http.services.myservice.loadbalancer.server.port=80" # The port your service listens on
+      - "traefik.http.routers.myservice.entrypoints=websecure" # Use the entrypoint defined in Traefik's compose
+      - "traefik.http.routers.myservice.tls=true"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.myservice.middlewares=redirect-to-https" # Redirect HTTP to HTTPS
+      - "traefik.http.routers.myservice.middlewares=redirect-www-to-non-www@file" # Redirect www to non-www
 
 networks:
   default:
