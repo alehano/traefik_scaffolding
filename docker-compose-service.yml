@@ -16,8 +16,10 @@ services:
       - "traefik.http.routers.myservice.tls=true"
       #- "traefik.http.routers.myservice.middlewares=redirect-to-https" # Redirect HTTP to HTTPS. Can be set by Cloudflare
       - "traefik.http.routers.myservice.middlewares=redirect-www-to-non-www@file" # Redirect www to non-www
+    networks:
+      - web
 
 networks:
-  default:
-    external:
-      name: web
+  web:
+    driver: bridge
+    external: true
