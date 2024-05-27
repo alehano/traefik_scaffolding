@@ -26,8 +26,10 @@ services:
       # Basic Auth. To generate: htpasswd -nb username password
       # Make sure to escape $ with $$ in the hashed_password
       - "traefik.http.middlewares.auth.basicauth.users=${BASIC_AUTH}"
-
+    networks:
+      - web
+      
 networks:
-  default:
-    external:
-      name: web
+  web:
+    driver: bridge
+    external: true
