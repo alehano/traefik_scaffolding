@@ -16,9 +16,8 @@ services:
       - "./dynamic_conf.yml:/etc/traefik/dynamic_conf/dynamic_conf.yml"
       - "./certs:/etc/traefik/certs"
 
-    environment:
-      # Example: user:password (don't forget to change)
-      - "BASIC_AUTH=user:$$apr1$$UYOAEpCs$$q/6o7sz1Pu7DBglIcrb0H0"
+    env_file:
+      - .env
 
     labels:
       - "traefik.enable=true"
